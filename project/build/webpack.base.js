@@ -60,11 +60,6 @@ module.exports = {
         },
         devServer: true,
       }),
-      new ESLintPlugin({
-        extensions: ['.ts', '.js'],
-        failOnError: false,
-        exclude: 'node_modules',
-      }),
     ].filter(Boolean),
   ),
   module: {
