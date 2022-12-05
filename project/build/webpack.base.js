@@ -12,7 +12,7 @@ const styleHandler = isProd ? MiniCssExtractPlugin.loader : 'style-loader';
 module.exports = {
   context: path.resolve(__dirname, '../src'),
   entry: fileName.reduce((config = {}, file) => {
-    config[file] = `./${file}.ts`;
+    config[file] = `./scripts/${file}.ts`;
     return config;
   }, {}),
   output: {
