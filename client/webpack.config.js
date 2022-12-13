@@ -1,14 +1,14 @@
 const {merge} = require('webpack-merge');
 const baseConfig = require('./build/webpack.base');
-const devConfig = require('./build/webpack.dev');
-const prodConfig = require('./build/webpack.prod');
+const developmentConfig = require('./build/webpack.dev');
+const productionConfig = require('./build/webpack.prod');
 
 module.exports = (env, argv) => {
   switch (argv.mode) {
     case 'development':
-      return merge(baseConfig, devConfig);
+      return merge(baseConfig, developmentConfig);
     case 'production':
-      return merge(baseConfig, prodConfig);
+      return merge(baseConfig, productionConfig);
     default:
       throw new Error('No matching configuration was found!');
   }
