@@ -59,6 +59,24 @@ const Main = () => {
           }
           }
           />
+    useEffect(() => {
+        if (brandsFilter.length) {
+            setItems(store.currentData.filter((it: IProduct) => brandsFilter.includes(it.brand.toLowerCase())))
+        } else {
+            setItems(store.currentData)
+        }
+    }, [brandsFilter])
+
+
+    return (
+        <div className={q.mainPage}>
+            <div className={q.asideField}>
+                <Aside itemsFilter={itemsFilter}/>
+            </div>
+            <div className={q.mainField}>
+
+                <Category items={items}/>
+            </div>
         </div>
         <Category items={items}/>
       </div>
