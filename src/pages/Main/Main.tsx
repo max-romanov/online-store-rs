@@ -5,6 +5,7 @@ import {observer} from "mobx-react-lite";
 import Category from "../Category/Category";
 import {Context} from "../../index";
 import {IProduct} from "../../interfaces/IProduct";
+import {SearchBar} from "../../components/SearchBar/SearchBar";
 
 const Main = () => {
     const {store} = useContext(Context)
@@ -49,7 +50,9 @@ const Main = () => {
                 <Aside itemsFilter={itemsFilter}/>
             </div>
             <div className={q.mainField}>
-
+                <SearchBar onInput={(value) => {
+                    setItems(store.currentData.filter(it => it.title.toLowerCase().includes(value.toLowerCase())))
+                }}/>
                 <Category items={items}/>
             </div>
         </div>
