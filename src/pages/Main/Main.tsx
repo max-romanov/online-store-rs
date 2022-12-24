@@ -49,6 +49,7 @@ const Main = () => {
                 <Aside itemsFilter={itemsFilter}/>
             </div>
             <div className={q.mainField}>
+
                 <Category items={items}/>
             </div>
         </div>
