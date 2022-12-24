@@ -1,0 +1,20 @@
+.mainPage {
+    margin-top: 81px;
+    display: flex;
+    width: 100%;
+}
+
+.asideField {
+    display: flex;
+    align-items: flex-start;
+    width: 20%;
+    /*height: 100%;*/
+    flex-grow: 0;
+}
+
+.mainField {
+    display: flex;
+    max-width: 80%;
+    width: 80%;
+    border-left: 1px solid #ddd;
+}

@@ -1,0 +1,53 @@
+.asideField {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.asideCategories {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 20px 0 0;
+    height: 200px;
+    overflow-y: auto;
+    background: white;
+}
+
+.asideCategories span {
+    padding: 5px;
+    transition: .2s;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+}
+
+.asideCategories span:hover {
+    background: #ddd;
+    padding-left: 20px;
+}
+
+.asideCategories span.current {
+    /*background: #eee;*/
+    padding-left: 20px;
+    color: green;
+}
+
+.asideCategories span.current:before {
+    content: '\2714';
+    left: 7px;
+    font-size: 12px;
+    position: absolute;
+}
+
+
+.asideCategories span.current:hover {
+    background: #ddd;
+}
+
+.title {
+    margin: 20px 0 10px;
+    font-size: 25px;
+    font-weight: bold;
+}

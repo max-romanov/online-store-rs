@@ -1,0 +1,55 @@
+.header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    background: white;
+    z-index: 50;
+}
+
+.headerItems {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    align-items: center;
+    /*gap: 5px;*/
+}
+
+.headerLogo {
+    user-select: none;
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+}
+
+.basket {
+    display: flex;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+/*.basket:hover {*/
+/*    color: dodgerblue;*/
+/*}*/
+
+.basket:hover span{
+    color: dodgerblue;
+}
+
+.itemsCount {
+    font-size: 20px;
+    font-weight: bold;
+    transform: translateY(6px);
+    transition: .2s;
+    user-select: none;
+}
+
+.price {
+    font-size: 18px;
+    transform: translateY(8px);
+    transition: .2s;
+    user-select: none;
+    margin-left: 10px;
+}
