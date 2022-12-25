@@ -46,6 +46,11 @@
     background: #ddd;
 }
 
+.inputsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
 .title {
     margin: 20px 0 10px;
     font-size: 25px;
