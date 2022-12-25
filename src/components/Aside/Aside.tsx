@@ -7,12 +7,18 @@ import {IProduct} from "../../interfaces/IProduct";
 
 interface IAsideProps {
   itemsFilter: (arg: string) => void
-  onPriceFilterInputChange: (min: number, max: number) => void
+  onPriceFilterInputChange: (min: number, max: number) => void,
+  onStockFilterChange: (min: number, max: number) => void
 }
 
 const Aside = (props: IAsideProps) => {
-
   const {store} = useContext(Context)
+
+  const [minStock, setMinStock] = useState(0)
+  const [maxStock, setMaxStock] = useState(Math.max(...store.currentData.map(it => it.stock)))
+
+  const [minPrice, setMinPrice] = useState(0)
+  const [maxPriceFilter, setMaxPriceFilter] = useState(Math.max(...store.currentData.map(it => it.stock)))
 
   const [current, setCurrent] = useState('')
 
@@ -48,8 +54,11 @@ const Aside = (props: IAsideProps) => {
   }
   // sortPrice(10, 15)
 
-  let min = 0
-  let max = 0
+  // let minPrice = 0
+  // let maxPriceFilter = 0
+  //
+  // let minStock = 0;
+  // let maxStock = 0;
 
   return (
     <div className={q.asideField}>
@@ -90,17 +99,30 @@ const Aside = (props: IAsideProps) => {
 
       <div>
         <div className={q.inputsContainer}>
+          <h3>Price Filter</h3>
           <label htmlFor="min">min</label>
           <input name={"min"} max={Math.max(...store.currentData.map(x => x.price))} type="range" value="0" onChange={(e) => {
-            min = e.currentTarget.valueAsNumber
-            props.onPriceFilterInputChange(min, max)
+            setMinPrice(e.currentTarget.valueAsNumber)
+            props.onPriceFilterInputChange(minPrice, maxPriceFilter)
           }}/>
           <label htmlFor="max">max</label>
           <input name="max" type="range" max={Math.max(...store.currentData.map(x => x.price))} onChange={(e) => {
-            max = e.currentTarget.valueAsNumber
-            props.onPriceFilterInputChange(min, max)
+            setMaxPriceFilter(e.currentTarget.valueAsNumber)
+            props.onPriceFilterInputChange(minPrice, maxPriceFilter)
           }}/>
         </div>
+      </div>
+      <div className={q.inputsContainer}>
+        <h3>Stock Filter</h3>
+        <input type="range" value={""} onChange={(e) => {
+          setMinStock(e.currentTarget.valueAsNumber)
+          props.onStockFilterChange(minStock, maxStock)
+        }} min={Math.min(...store.currentData.map(it => it.stock))} max={Math.max(...store.currentData.map(it => it.stock))} name={"min"}/>
+
+        <input type="range" value={""} onChange={(e) => {
+          setMaxStock(e.currentTarget.valueAsNumber)
+          props.onStockFilterChange(minStock, maxStock)
+        }} min={Math.min(...store.currentData.map(it => it.stock))} max={Math.max(...store.currentData.map(it => it.stock))} name={"max"}/>
       </div>
     </div>
   );
