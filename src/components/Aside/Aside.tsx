@@ -91,12 +91,12 @@ const Aside = (props: IAsideProps) => {
       <div>
         <div className={q.inputsContainer}>
           <label htmlFor="min">min</label>
-          <input name={"min"} type="range" value="0" onChange={(e) => {
+          <input name={"min"} max={Math.max(...store.currentData.map(x => x.price))} type="range" value="0" onChange={(e) => {
             min = e.currentTarget.valueAsNumber
             props.onPriceFilterInputChange(min, max)
           }}/>
           <label htmlFor="max">max</label>
-          <input name="max" type="range" max="1000" onChange={(e) => {
+          <input name="max" type="range" max={Math.max(...store.currentData.map(x => x.price))} onChange={(e) => {
             max = e.currentTarget.valueAsNumber
             props.onPriceFilterInputChange(min, max)
           }}/>
