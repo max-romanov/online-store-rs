@@ -18,3 +18,13 @@
     font-weight: bold;
     margin: 30px 0;
 }
+
+.basketPopup {
+    padding: 2em;
+    border: black 1px solid;
+    background: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
