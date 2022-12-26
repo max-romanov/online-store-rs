@@ -3,15 +3,17 @@ import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import q from './Aside.module.css'
 import {IProduct} from "../../interfaces/IProduct";
+import {PriceFilter} from "./PriceFilter/PriceFilter";
+import {StockFilter} from "./StockFilter/StockFilter";
 
 
 interface IAsideProps {
   itemsFilter: (arg: string) => void
-  onPriceFilterInputChange: (min: number, max: number) => void
+  onStockFilterChange: (min: number, max: number) => void
+  onPriceFilterInputChange: (min: number, max: number) => void,
 }
 
 const Aside = (props: IAsideProps) => {
-
   const {store} = useContext(Context)
 
   const [current, setCurrent] = useState('')
@@ -48,8 +50,11 @@ const Aside = (props: IAsideProps) => {
   }
   // sortPrice(10, 15)
 
-  let min = 0
-  let max = 0
+  // let minPrice = 0
+  // let maxPriceFilter = 0
+  //
+  // let minStock = 0;
+  // let maxStock = 0;
 
   return (
     <div className={q.asideField}>
@@ -87,21 +92,8 @@ const Aside = (props: IAsideProps) => {
                     </span>
         )}
       </nav>
-
-      <div>
-        <div className={q.inputsContainer}>
-          <label htmlFor="min">min</label>
-          <input name={"min"} max={Math.max(...store.currentData.map(x => x.price))} type="range" value="0" onChange={(e) => {
-            min = e.currentTarget.valueAsNumber
-            props.onPriceFilterInputChange(min, max)
-          }}/>
-          <label htmlFor="max">max</label>
-          <input name="max" type="range" max={Math.max(...store.currentData.map(x => x.price))} onChange={(e) => {
-            max = e.currentTarget.valueAsNumber
-            props.onPriceFilterInputChange(min, max)
-          }}/>
-        </div>
-      </div>
+      <PriceFilter onPriceFilterInputChange={props.onPriceFilterInputChange}/>
+      <StockFilter onStockFilterChange={props.onStockFilterChange}/>
     </div>
   );
 };

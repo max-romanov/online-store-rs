@@ -20,6 +20,7 @@ const Item = (item: IProduct) => {
         <div
             className={q.item}
         >
+            <h1>{item.stock}</h1>
             <div className={q.image}
                  style={{backgroundImage: `url(${item.thumbnail})`}}
             >

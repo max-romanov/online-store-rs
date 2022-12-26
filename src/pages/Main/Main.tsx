@@ -48,8 +48,10 @@ const Main = () => {
       <div className={q.asideField}>
         <Aside itemsFilter={itemsFilter} onPriceFilterInputChange={(min, max) => {
           const newItems = store.currentData.filter(it => it.price >= min && it.price <= max)
-          console.log(`max: ${max}`)
-          console.log(`min: ${min}`)
+          setItems(newItems)
+        }} onStockFilterChange={(min, max) => {
+          const newItems = store.currentData.filter(it => it.stock >= min && it.stock <= max)
+          console.log(`min: ${min}`, `max: ${max}`)
           setItems(newItems)
         }}/>
       </div>
