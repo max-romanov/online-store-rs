@@ -11,9 +11,22 @@ export default class Store {
     currentData: Array<IProduct> = []
 
     constructor() {
+        this.setBasket()
         makeAutoObservable(this)
     }
 
+    setBasket() {
+        const storageValue = localStorage.getItem("basket")
+        if (!storageValue) {
+            return
+        }
+        const parsed = JSON.parse(storageValue)
+        if (!(parsed instanceof Array<IProduct>)) {
+            throw new Error("?")
+        }
+
+        this.basket = parsed
+    }
 
     async setStore() {
         try {
@@ -42,10 +55,12 @@ export default class Store {
 
     addToBasket(item: IProduct) {
         this.basket.push(item)
+        localStorage.setItem("basket", JSON.stringify(this.basket))
     }
 
     clearBasket() {
         this.basket = []
+        localStorage.setItem("basket", JSON.stringify(this.basket))
     }
 
     // setBrands() {
