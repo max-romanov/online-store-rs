@@ -59,7 +59,10 @@ const Main = () => {
       </div>
       <div className={q.mainField}>
         <SearchBar onInput={(value) => {
-          setItems(store.currentData.filter(it => it.title.toLowerCase().includes(value.toLowerCase())))
+          setItems(store.currentData.filter(it => 
+            it.title.toLowerCase().includes(value.toLowerCase()) ||
+            it.brand.toLowerCase().includes(value.toLowerCase())
+          ))
         }}/>
         <Category items={items}/>
       </div>
