@@ -6,6 +6,8 @@ import Category from "../Category/Category";
 import {Context} from "../../index";
 import {IProduct} from "../../interfaces/IProduct";
 import {SearchBar} from "../../components/SearchBar/SearchBar";
+import { Route } from "react-router-dom"
+import Item from "../../components/Item/Item";
 
 const Main = () => {
   const {store} = useContext(Context)

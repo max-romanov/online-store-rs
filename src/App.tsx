@@ -6,6 +6,7 @@ import {Route, Routes} from "react-router-dom";
 import NotFoundPage from "./pages/Error/Error";
 import {Context} from "./index";
 import Basket from "./pages/Basket/Basket";
+import Item from "./components/Item/Item";
 
 
 const App = () => {
