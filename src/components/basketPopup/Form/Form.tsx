@@ -60,7 +60,7 @@ const Form = () => {
     {
       name: "validThru",
       placeholder: "valid thru",
-      matcher: /^[0-9]{1,2} [0-9]{1,2}$/,
+      matcher: /^[0-9]{1,2}\/[0-9]{1,2}$/i,
       errorSetter: (value: boolean) => {
         errors.setValidThruError(value)
       }
