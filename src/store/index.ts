@@ -7,7 +7,6 @@ export default class Store {
 
     allData: Array<IProduct> = []
     categories: Array<string> = []
-    // brands: Array<string> = []
     basket: Array<IProduct> = []
     currentData: Array<IProduct> = []
 
@@ -43,6 +42,10 @@ export default class Store {
 
     addToBasket(item: IProduct) {
         this.basket.push(item)
+    }
+
+    clearBasket() {
+        this.basket = []
     }
 
     // setBrands() {
