@@ -23,7 +23,7 @@ const Form = () => {
       },
     },
     {
-      matcher: /^[a-zA-Z]+.{4} [a-zA-Z]+.{4} [a-zA-Z]+.{4}$/i,
+      matcher: /^[a-zA-Z]+.{4} [a-zA-Z]+.{4} [a-zA-Z]+.{4}.+$/i,
       placeholder: "your address",
       name: "address",
       errorSetter: (value: boolean) => {
