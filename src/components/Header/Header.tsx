@@ -43,7 +43,7 @@ const Header = () => {
                                 //         : "s")
                         }
                     >
-                        <span className="material-symbols-outlined">shopping_cart_checkout</span>
+                        <span className="material-symbols-outlined hhh">shopping_cart_checkout</span>
 
                         <span className={q.itemsCount}>
                             {store.basket.length}
@@ -52,7 +52,7 @@ const Header = () => {
                         {store.basket.length
                             ? <span className={q.price}>
                             {/*общая стоимость - */}
-                                total - {store.basket.reduce((a: number, b) => a + b.price, 0)} $
+                                total - {store.basket.reduce((a: number, b) => a + b.price * b.count, 0)} $
                         </span>
                             : ''
                         }

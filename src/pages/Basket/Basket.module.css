@@ -1,115 +1,131 @@
 .basket {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 80px;
     width: 100%;
     min-height: calc(100% - 82px);
-    border: black 1px solid;
-    /*background: rgb(30,199,128);*/
-    /*background: linear-gradient(36deg, rgba(30,199,128,1) 0%, rgba(54,173,145,1) 36%, rgba(156,21,194,1) 100%);*/
     padding: 20px;
     gap: 20px;
     flex-wrap: wrap;
-    align-content: flex-start;
+    /*align-content: flex-start;*/
     position: relative;
 }
 
+.empty {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    text-align: center;
+    line-height: 50px;
+}
 .basketTitle {
     display: flex;
     width: 100%;
     padding-left: 40px;
     font-size: 30px;
     font-weight: bold;
-    margin: 30px 0;
+    margin: 10px 0;
 }
 
-.basketPopup {
+.basketItemsField {
     display: flex;
-    margin: 0 1em;
-    align-items: center;
-    flex-direction: column;
-    /*background: hsla(0,0%,100%,.13);*/
-    background: white;
-    box-shadow: 0 0 5px rgba(0,54,60,.2);
-    border-radius: 7px;
-    /*color: hsl(0,0%,95%);*/
-    padding: 2em;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    backdrop-filter: blur(5px);
+    width: clamp(300px, 90%, 1300px);
+    gap: 20px;
 }
 
-.basketPopupForm {
-    margin: 2em 0;
-}
-
-.basketPopupInputContainer {
+.basketItems {
     display: flex;
     flex-direction: column;
+    width: 70%;
+    gap: 20px;
 }
 
-.basketPopupButton {
-    padding: 1em 2em;
-    background: white;
-    border: #222222 1px solid;
-    font-size: 1rem;
-    margin: .5em 0;
-    transition: background-color .4s ease;
-    cursor: pointer;
+.discountItems {
+    width: 30%;
+    /*background: bisque;*/
 }
 
-.basketPopupButton:hover {
-    background: #e1e1e1;
-}
-
-.basketPopupCloseButton {
+.discountItem {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    position: relative;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    border: 1px solid #EEE;
+    padding: 30px;
+    flex-grow: 0;
+    position: sticky;
+    top: 100px;
+}
+
+.discountPrice {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    text-align: right;
+    font-weight: bold;
+    color: #555;
+}
+
+.discountPrice:not(:nth-child(2)) {
+    font-size: 24px;
+    color: #111;
+}
+
+.discountPromoCodeField {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.discountPromoCodeField button {
+    padding: 5px 20px;
+    border: 1px solid green;
+    color: green;
     background: transparent;
+    border-radius: 3px;
     cursor: pointer;
-    box-shadow: none;
-    border: none;
+    transition: .4s;
 }
 
-.basketPopupCloseButton:before {
-    position: absolute;
-    content: '';
-    width: 3px;
-    height: 20px;
-    background: black;
-    border-radius: 5px;
-    transform: rotate(-45deg);
+.discountPromoCodeField button:hover {
+    color: white;
+    background: green;
 }
 
-.basketPopupCloseButton:after {
-    position: absolute;
-    content: '';
-    width: 3px;
-    height: 20px;
-    background: black;
-    border-radius: 5px;
-    transform: rotate(45deg);
+.discountPromoCode {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    padding: 5px;
+    text-overflow: ellipsis;
+    border-radius: 3px;
+    border: 1px solid grey;
+    outline: none;
 }
 
-.basketPopupCard {
-    background: linear-gradient(40deg, #50C878, #7530ce);
-    border-radius: 5px;
+.buyButton {
+    background: green;
+    color: white;
+    border-radius: 4px;
+    padding: 10px 40px;
+    border-color: green;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
 }
 
-.basketPopupCardInput {
-
+.prommo {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
 }
 
-.basketPopupErrorText {
-  color: red;
-}
-
-.basketPopupInputsContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.old {
+    text-decoration: line-through;
 }

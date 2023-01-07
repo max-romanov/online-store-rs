@@ -1,32 +1,32 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import './App.css';
 import Layout from "./components/Layout";
 import Main from "./pages/Main/Main";
 import {Route, Routes} from "react-router-dom";
-import NotFoundPage from "./pages/Error/Error";
-import {Context} from "./index";
+import Error from "./pages/Error/Error";
 import Basket from "./pages/Basket/Basket";
-import Item from "./components/Item/Item";
 
 
 const App = () => {
-  const {store} = useContext(Context)
 
-  return (
-    <Layout>
-      <main>
-        <div className="mainContainer">
-          <Routes>
-            <Route path="/">
-              <Route index element={<Main/>}/>
-              <Route path="basket" element={<Basket/>}/>
-              <Route path="*" element={<NotFoundPage/>}/>
-            </Route>
-          </Routes>
-        </div>
-      </main>
-    </Layout>
-  );
+    return (
+        <Layout>
+            <main>
+                <div className="mainContainer">
+                    <Routes>
+                        <Route path="/" element={<Main/>}/>
+                        <Route index element={<Main/>}/>
+                        {/*{store.categories.map((i, idx) =>*/}
+                        {/*    <Route key={idx} path={"all_items/" + i} element={<Category/>}/>*/}
+                        {/*)}*/}
+                        <Route path="basket" element={<Basket/>}/>
+                        <Route path='*' element={<Error/>}/>
+                        {/*</Route>*/}
+                    </Routes>
+                </div>
+            </main>
+        </Layout>
+    );
 }
 
 export default App;

@@ -1,5 +1,5 @@
 import {makeAutoObservable} from "mobx";
-import {IProduct} from "../interfaces/IProduct";
+import {IProduct, IProductB} from "../interfaces/IProduct";
 
 
 export default class Store {
@@ -7,26 +7,16 @@ export default class Store {
 
     allData: Array<IProduct> = []
     categories: Array<string> = []
-    basket: Array<IProduct> = []
+    // brands: Array<string> = []
+    basket: Array<IProductB> = []
     currentData: Array<IProduct> = []
+    oldPromoCodes: Array<string> = []
 
     constructor() {
-        this.setBasket()
         makeAutoObservable(this)
+
     }
 
-    setBasket() {
-        const storageValue = localStorage.getItem("basket")
-        if (!storageValue) {
-            return
-        }
-        const parsed = JSON.parse(storageValue)
-        if (!(parsed instanceof Array<IProduct>)) {
-            throw new Error("?")
-        }
-
-        this.basket = parsed
-    }
 
     async setStore() {
         try {
@@ -54,13 +44,12 @@ export default class Store {
     }
 
     addToBasket(item: IProduct) {
-        this.basket.push(item)
-        localStorage.setItem("basket", JSON.stringify(this.basket))
+        const temp = {...item, count: 1}
+        this.basket.push(temp)
     }
 
-    clearBasket() {
-        this.basket = []
-        localStorage.setItem("basket", JSON.stringify(this.basket))
+    setOldPromo(code: string) {
+        this.oldPromoCodes.push(code)
     }
 
     // setBrands() {
