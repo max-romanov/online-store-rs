@@ -2,19 +2,13 @@ import React, {useContext, useEffect, useState} from 'react';
 import {IProduct, IProductB} from "../../interfaces/IProduct";
 import q from './Item.module.css'
 import {Context} from "../../index";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {observer} from "mobx-react-lite";
-import {toJS} from 'mobx'
 
 
 const Item = (item: IProduct & { showControls: boolean }) => {
     const {store} = useContext(Context)
     const navigate = useNavigate()
-
-
-    // useEffect(() => {
-    //     console.log(item.showControls)
-    // }, [item.showControls])
 
     const addToBasket = () => {
         store.addToBasket(item)
@@ -26,8 +20,7 @@ const Item = (item: IProduct & { showControls: boolean }) => {
         if (item) {
             if (item.count === 1 && !arg) {
                 const temp = store.basket.filter(it => it.id !== item.id)
-                store.basket.length = 0
-                store.basket.push(...temp)
+                store.filterBasket(temp)
                 if (!store.basket.length) {
                     const to = setTimeout(() => {
                         navigate("/")
@@ -37,17 +30,18 @@ const Item = (item: IProduct & { showControls: boolean }) => {
                 return
             }
             if (arg) {
-                if (item.count < item.stock) store.basket.map(it => it.id === item.id ? it.count += 1 : it)
+                if (item.count < item.stock) {
+                    store.setBasketCount(item, arg)
+                }
             } else {
-                store.basket.map(it => it.id === item.id ? it.count -= 1 : it)
+                store.setBasketCount(item, arg)
             }
         }
     }
 
     const removeItemFromBasket = (id: number) => {
         const temp = store.basket.filter(it => it.id !== id)
-        store.basket.length = 0
-        store.basket.push(...temp)
+        store.filterBasket(temp)
         if (!store.basket.length) {
             const to = setTimeout(() => {
                 navigate("/")
@@ -69,9 +63,9 @@ const Item = (item: IProduct & { showControls: boolean }) => {
     }, [store.basket.find(it => it.id === item.id)?.count])
 
 
-    // const showInfo = () => {
-    //     navigate("basket")
-    // }
+    const showInfo = (id: number) => {
+        navigate('item/' + id.toString())
+    }
 
     return (
         <div
@@ -123,18 +117,21 @@ const Item = (item: IProduct & { showControls: boolean }) => {
 
                 {!item.showControls
                     ? <div className={q.info}>
-                <span className={q.infoI}
-                    // onClick={showInfo}
-                >
-                    <span className="material-symbols-outlined" title="more info">unknown_document</span>
-                    <span>Details</span>
-                </span>
+                        <span className={q.infoI}>
+                            <span className="material-symbols-outlined" title="more info">unknown_document</span>
+                            <span onClick={() => showInfo(item.id)}>Details</span>
+                        </span>
                         <span
-                            // className={q.cart}
-                            className={store.basket.filter(it => it.id === item.id).length > 0 ? [q.cart, q.dis].join(' ') : q.cart}
+                            className={
+                                store.allData.find(it => it.id === item.id)?.stock
+                                    ? store.basket.filter(it => it.id === item.id).length > 0
+                                        ? [q.cart, q.dis].join(' ')
+                                        : q.cart
+                                    : [q.cart, q.z].join(' ')
+                            }
                             onClick={addToBasket}
                         >
-                        {!store.basket.filter(it => it.id === item.id).length
+                        {!store.basket.filter(it => it.id === item.id).length && store.allData.find(it => it.id === item.id)?.stock
                             ? <span className="material-symbols-outlined" title="add to cart">add_shopping_cart</span>
                             : null
                         }
@@ -142,7 +139,7 @@ const Item = (item: IProduct & { showControls: boolean }) => {
                                 ? <span className={q.addToCart}>
                                 {store.basket.filter(it => it.id === item.id).length > 0 ? 'Added to cart' : 'Add to cart'}
                              </span>
-                                : <span>Not available now</span>
+                                : <span>Not available</span>
                             }
                     </span>
                     </div>
@@ -153,7 +150,10 @@ const Item = (item: IProduct & { showControls: boolean }) => {
                         <span className={q.stock}>stock - {item.stock ? item.stock + 'pc' : 'absent'}</span>
                         <span className={q.buttonsField}>
                             <span className="material-symbols-outlined"
-                                  onClick={() => setCount(false, store.basket.find(it => it.id === item.id))}>indeterminate_check_box</span>
+                                  onClick={() => setCount(false, store.basket.find(it => it.id === item.id))}
+                            >
+                                indeterminate_check_box
+                            </span>
                             <input
                                 type="number"
                                 placeholder={store.basket.find(it => it.id === item.id)?.count.toString()}
@@ -161,12 +161,11 @@ const Item = (item: IProduct & { showControls: boolean }) => {
                                 readOnly
                             />
                             <span className="material-symbols-outlined"
-                                  onClick={() => setCount(true, store.basket.find(it => it.id === item.id))}>add_box</span>
-                            {/*<span*/}
-                            {/*    className="material-symbols-outlined trash"*/}
-                            {/*    title="remove item"*/}
-                            {/*    onClick={() => removeItemFromBasket(item.id)}*/}
-                            {/*>delete_forever</span>*/}
+
+                                  onClick={() => setCount(true, store.basket.find(it => it.id === item.id))}
+                            >
+                                add_box
+                            </span>
                         </span>
                     </div>
                     : null

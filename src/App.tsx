@@ -5,6 +5,7 @@ import Main from "./pages/Main/Main";
 import {Route, Routes} from "react-router-dom";
 import Error from "./pages/Error/Error";
 import Basket from "./pages/Basket/Basket";
+import Item from "./pages/Item/Item";
 
 
 const App = () => {
@@ -16,12 +17,9 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<Main/>}/>
                         <Route index element={<Main/>}/>
-                        {/*{store.categories.map((i, idx) =>*/}
-                        {/*    <Route key={idx} path={"all_items/" + i} element={<Category/>}/>*/}
-                        {/*)}*/}
+                        <Route path="item/:id" element={<Item />}/>
                         <Route path="basket" element={<Basket/>}/>
                         <Route path='*' element={<Error/>}/>
-                        {/*</Route>*/}
                     </Routes>
                 </div>
             </main>

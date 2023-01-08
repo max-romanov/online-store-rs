@@ -9,7 +9,7 @@ import {IProduct} from "../../interfaces/IProduct";
 const Header = () => {
     const {store} = useContext(Context)
 
-    let navigate = useNavigate()
+    const navigate = useNavigate()
 
     const showBasket = (): void => {
         if (store.basket.length > 0) {

@@ -7,7 +7,6 @@ import {useNavigate} from "react-router-dom";
 
 const Basket = () => {
     const {store} = useContext(Context)
-    const pc: Array<[string, number]> = [['801', 0.15], ['cherry', 0.3], ['dramen', 0.4], ['duck', 0.5], ['me', 0.05]]
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -23,11 +22,11 @@ const Basket = () => {
     const [discount, setDiscount] = useState(0)
 
     const checkDiscount = () => {
-        const temp = pc.find(it => it[0].toLowerCase() === discountPromoCode.toLowerCase())
+        const temp = store.promoCodes.find(it => it[0].toLowerCase() === discountPromoCode.toLowerCase())
         if (temp) {
             if (!store.oldPromoCodes.includes(temp[0])) {
                 setDiscount(temp[1])
-                store.setOldPromo(temp[0])
+                // store.setOldPromo(temp[0])
             } else {
                 setDiscount(0)
             }
@@ -37,6 +36,15 @@ const Basket = () => {
     }
 
     const setDiscountPromoCodeFunc = (e: FormEvent<HTMLInputElement>) => setDiscountPromoCode(e.currentTarget.value)
+
+    const buy = () => {
+        if (store.basket.length) {
+            const temp = store.promoCodes.find(it => it[0].toLowerCase() === discountPromoCode.toLowerCase())
+            store.buy(temp ? discountPromoCode : '')
+        }
+        navigate("/")
+    }
+
 
     return (
         <div className={q.basket}>
@@ -64,19 +72,19 @@ const Basket = () => {
                             <input
                                 className={q.discountPromoCode}
                                 type="text"
-                                placeholder="your promo-code"
+                                placeholder="your promo"
                                 value={discountPromoCode}
                                 onInput={(e) => setDiscountPromoCodeFunc(e)}
                             />
                             <button onClick={() => checkDiscount()}>CHECK</button>
                         </div>
                         <span className={q.prommo}>{
-                            pc.map(it =>
-                                    <span className={store.oldPromoCodes.includes(it[0].toLowerCase()) ? q.old : ''}>
+                            store.promoCodes.map(it =>
+                                    <span key={it[0]} className={store.oldPromoCodes.includes(it[0].toLowerCase()) ? q.old : ''}>
                                 {it[0]}
                             </span>
                             )}</span>
-                        <button className={q.buyButton}>Buy now</button>
+                        <button className={q.buyButton} onClick={buy}>Buy now</button>
                     </div>
                 </div>
             </div>

@@ -36,13 +36,13 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    transition: .4s;
+    transition: 1.5s;
     padding-bottom: 70%;
 }
 
 
 .imageField:hover .image {
-    transform: scale(1.2);
+    transform: scale(1.4);
 }
 
 .item:hover {
@@ -141,6 +141,10 @@
     pointer-events: none;
     color: dodgerblue;
     cursor: initial;
+}
+
+.z {
+    pointer-events: none;
 }
 
 .dis span {

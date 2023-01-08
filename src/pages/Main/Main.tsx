@@ -43,6 +43,10 @@ const Main = () => {
     }, [brandsFilter])
 
 
+    // const availability = () => {
+    //
+    // }
+
     return (
         <div className={q.mainPage}>
             <div className={q.asideField}>

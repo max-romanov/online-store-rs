@@ -4,8 +4,10 @@ import './index.css';
 import App from './App';
 import Store from "./store";
 import {BrowserRouter as Router} from "react-router-dom";
+import codes from './promoCodes'
 
-const store = new Store();
+const store = new Store(codes);
+
 export const Context = React.createContext({store});
 
 

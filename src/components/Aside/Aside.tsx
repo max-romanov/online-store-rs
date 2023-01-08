@@ -44,6 +44,7 @@ const Aside = ({itemsFilter}: { itemsFilter: Function }) => {
 
     const chAviability = () => {
         setCurAv(!curAv)
+        store.showAll()
     }
 
     return (
