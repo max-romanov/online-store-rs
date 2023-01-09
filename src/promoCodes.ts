@@ -1,7 +1,24 @@
-import InitialValue from "./interfaces/initialValue";
+import { IPromocode } from './interfaces/IPromocode'
 
-const codes: InitialValue = {
-    promoCodes: [['801', 0.15], ['cherry', 0.3], ['dramen', 0.4], ['max', 0.5], ['me', 0.05]]
-}
-
-export default codes
+export const codes: IPromocode[] = [
+  {
+    name: '801',
+    discount: 0.15,
+  },
+  {
+    name: 'cherry',
+    discount: 0.3,
+  },
+  {
+    name: 'dramen',
+    discount: 0.4,
+  },
+  {
+    name: 'max',
+    discount: 0.5,
+  },
+  {
+    name: 'me',
+    discount: 0.5,
+  },
+]
