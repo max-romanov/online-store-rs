@@ -1,4 +1,13 @@
-@import '../../styles/fade-animation.css';
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
 
 .basket {
   display: flex;
@@ -12,7 +21,7 @@
   flex-wrap: wrap;
   /*align-content: flex-start;*/
   position: relative;
-  animation: fade 0.5s ease-in;
+  animation: fade 0.5s linear;
 }
 
 .empty {
@@ -134,18 +143,22 @@
 }
 
 .basketPopup {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  padding: 2em;
-  border-radius: 2em;
-  border: 2px solid black;
+  padding: 40px;
+  border-radius: 7px;
+  border: 1px solid #333;
   display: flex;
   align-items: center;
   flex-direction: column;
+  min-width: 400px;
+  box-shadow: 0 10px 25px -3px rgb(0 0 0 / 20%);
+  animation: fade .5s ease-in;
 }
+
 
 .basketPopup div {
   display: flex;
@@ -153,11 +166,11 @@
   align-items: center;
 }
 
-.basketPopup div div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+/*.basketPopup div div {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*}*/
 
 .basketPopupButton {
   background: green;
@@ -165,10 +178,17 @@
   font-size: 20px;
   color: white;
   border-radius: 5px;
-  margin: 10px 0;
+  margin: 30px 0 0 auto;
+  cursor: pointer;
 }
 
 button {
   box-shadow: none;
   border: none;
+}
+
+.totalPrice {
+  font-size: 24px;
+  margin-right: auto;
+  margin-bottom: 20px;
 }

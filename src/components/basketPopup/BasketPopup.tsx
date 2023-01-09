@@ -19,15 +19,15 @@ export const BasketPopup = (props: IBasketPopupProps) => {
   return (
     <div className={q.basketPopup}>
       {props.closeComponent}
-      <h3>Order</h3>
-      <p>total: {store.basket.reduce((total, product) => total + product.price, 0)}$</p>
+      {/*<h3>Order</h3>*/}
+      <span className={q.totalPrice}>total price: <b>{store.basket.reduce((total, product) => total + product.price, 0)}$</b></span>
       <Form/>
       <button className={q.basketPopupButton} onClick={() => {
-        if (!errors.nameError && !errors.phoneNumberError && !errors.addressError && !errors.codeError && !errors.validThruError && !errors.cardNumberError) {
+        if (!errors.name && !errors.phoneNumber && !errors.address && !errors.cvv && !errors.validThru && !errors.cardNumber) {
           props.onSubmit()
           setSucces(true)
         }
-      }}>Order
+      }}>Confirm
       </button>
       {succes && <p>ordered succesful</p>}
     </div>

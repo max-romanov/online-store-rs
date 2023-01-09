@@ -1,19 +1,23 @@
-import React from 'react';
-import q from "../Footer/Footer.module.css";
+import React from 'react'
+import q from '../Footer/Footer.module.css'
 
 const Footer = () => {
-    return (
-        <footer className={q.footer}>
-            <div className="mainContainer">
-                <div className={q.footerItems}>
-                    <span>@max-romanov</span>
-                    <span>@pashabn</span>
-                    <span>2022</span>
-                    <span>RSSchool</span>
-                </div>
-            </div>
-        </footer>
-    );
-};
+  return (
+    <footer className={q.footer}>
+      <div className='mainContainer'>
+        <div className={q.footerItems}>
+          <a className={q.link} href='https://github.com/max-romanov'>
+            @max-romanov
+          </a>
+          <a className={q.link} href='https://github.com/Pashabn'>
+            @pashabn
+          </a>
+          <span>2023</span>
+          <a className={q.link} href="https://rs.school/js">RSSchool</a>
+        </div>
+      </div>
+    </footer>
+  )
+}
 
-export default Footer;
+export default Footer

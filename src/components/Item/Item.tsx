@@ -62,7 +62,7 @@ const Item = (item: IProduct & { showControls: boolean }) => {
   }, [store.basket.find((it) => it.id === item.id)?.count])
 
   const showInfo = (id: number) => {
-    navigate('item/' + id.toString())
+    navigate('product/' + id.toString())
   }
 
   return (
@@ -153,6 +153,12 @@ const Item = (item: IProduct & { showControls: boolean }) => {
               >
                 indeterminate_check_box
               </span>
+              <input
+                type="text"
+                placeholder={store.basket.find(it => it.id === item.id)?.count.toString()}
+                className={q.countInput}
+                readOnly
+              />
               <span
                 className='material-symbols-outlined'
                 onClick={() =>
