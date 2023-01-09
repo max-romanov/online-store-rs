@@ -2,16 +2,19 @@
     display: flex;
     width: 100%;
     flex-direction: column;
+    position: sticky;
+    top: 82px;
 }
 
 .asideCategories {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 10px 20px 0 0;
-    height: 200px;
+    padding: 0 20px 0 0;
+    max-height: 180px;
     overflow-y: auto;
     background: white;
+    position: relative;
 }
 
 .asideCategories span {
@@ -22,6 +25,8 @@
     cursor: pointer;
     position: relative;
 }
+
+/*not(.current)*/
 
 .asideCategories span:hover {
     background: #ddd;
@@ -46,13 +51,42 @@
     background: #ddd;
 }
 
-.inputsContainer {
-    display: flex;
-    flex-direction: column;
-}
-
 .title {
-    margin: 20px 0 10px;
+    margin: 10px 0 10px;
     font-size: 25px;
     font-weight: bold;
+}
+
+.aviability {
+    display: flex;
+    width: 100%;
+    padding: 0 20px 0 0;
+    gap: 10px;
+}
+
+.avBtn {
+    display: flex;
+    width: 100%;
+    padding: 2px;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid grey;
+    border-radius: 3px;
+    transition: .3s;
+}
+
+.avBtn.act {
+    opacity: 0.8;
+    pointer-events: none;
+    /*color: #a8a802;*/
+    /*border-color: #a8a802;*/
+    color: dodgerblue;
+    border-color: dodgerblue;
+}
+
+.avBtn:hover {
+    color: green;
+    border-color: green;
 }

@@ -1,20 +1,194 @@
-.basket {
-    display: flex;
-    margin-top: 80px;
-    width: 100%;
-    min-height: calc(100% - 82px);
-    padding: 20px;
-    gap: 20px;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    position: relative;
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
+.basket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+  width: 100%;
+  min-height: calc(100% - 82px);
+  padding: 20px;
+  gap: 20px;
+  flex-wrap: wrap;
+  /*align-content: flex-start;*/
+  position: relative;
+  animation: fade 0.5s linear;
+}
+
+.empty {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  text-align: center;
+  line-height: 50px;
+}
 .basketTitle {
-    display: flex;
-    width: 100%;
-    padding-left: 40px;
-    font-size: 30px;
-    font-weight: bold;
-    margin: 30px 0;
+  display: flex;
+  width: 100%;
+  padding-left: 40px;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.basketItemsField {
+  display: flex;
+  width: clamp(300px, 90%, 1300px);
+  gap: 20px;
+}
+
+.basketItems {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  gap: 20px;
+}
+
+.discountItems {
+  width: 30%;
+  /*background: bisque;*/
+}
+
+.discountItem {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  border: 1px solid #eee;
+  padding: 30px;
+  flex-grow: 0;
+  position: sticky;
+  top: 100px;
+}
+
+.discountPrice {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  text-align: right;
+  font-weight: bold;
+  color: #555;
+}
+
+.discountPrice:not(:nth-child(2)) {
+  font-size: 24px;
+  color: #111;
+}
+
+.discountPromoCodeField {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.discountPromoCodeField button {
+  padding: 5px 20px;
+  border: 1px solid green;
+  color: green;
+  background: transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.discountPromoCodeField button:hover {
+  color: white;
+  background: green;
+}
+
+.discountPromoCode {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  padding: 5px;
+  text-overflow: ellipsis;
+  border-radius: 3px;
+  border: 1px solid grey;
+  outline: none;
+}
+
+.buyButton {
+  background: green;
+  color: white;
+  border-radius: 4px;
+  padding: 10px 40px;
+  border-color: green;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.prommo {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
+}
+
+.old {
+  text-decoration: line-through;
+}
+
+.basketPopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 40px;
+  border-radius: 7px;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-width: 400px;
+  box-shadow: 0 10px 25px -3px rgb(0 0 0 / 20%);
+  animation: fade .5s ease-in;
+}
+
+
+.basketPopup div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*.basketPopup div div {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*}*/
+
+.basketPopupButton {
+  background: green;
+  padding: 10px 40px;
+  font-size: 20px;
+  color: white;
+  border-radius: 5px;
+  margin: 30px 0 0 auto;
+  cursor: pointer;
+}
+
+button {
+  box-shadow: none;
+  border: none;
+}
+
+.totalPrice {
+  font-size: 24px;
+  margin-right: auto;
+  margin-bottom: 20px;
 }

@@ -3,57 +3,87 @@
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    user-select: none;
-    list-style: none;
-    text-decoration: none;
-    -webkit-tap-highlight-color: transparent;
-    font-family: 'Play', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  list-style: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Play', sans-serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 ::-webkit-scrollbar {
-    background: #EEE;
-    width: 4px;
-    height: 4px;
+  background: #eee;
+  width: 4px;
+  height: 4px;
 }
 ::-webkit-scrollbar-thumb {
-    background: #c1bdbd;
-    width: 4px;
-    height: 4px;
-    transition: all .8s;
+  background: #c1bdbd;
+  width: 4px;
+  height: 4px;
+  transition: all 0.8s;
 }
 
 .mainContainer {
-    display: flex;
-    width: clamp(300px, 90%, 1300px);
+  display: flex;
+  width: clamp(300px, 90%, 1300px);
 }
 
 #root {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    flex-direction: column;
-    /*background: #eee;*/
-    overflow-y: auto;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 main {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    flex-grow: 1;
-    /*min-height: calc(100% - 160px);*/
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-grow: 1;
 }
 
 .material-symbols-outlined {
-    font-size: 30px;
-    /*margin-left: auto;*/
-    color: #333;
-    transition: .3s;
+  font-size: 20px;
+  color: #333;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.hhh {
+  font-size: 30px;
 }
 
 .material-symbols-outlined:active {
-    transform: scale(0.97);
+  transform: scale(0.97);
+}
+
+.trash,
+.close-popup {
+  color: #730000;
+  font-size: 25px;
+  transition: 0.3s;
+}
+
+.trash:hover,
+.close-popup:hover {
+  color: red;
+}
+
+.dis {
+  pointer-events: none;
+}
+
+.close-popup {
+  position: absolute;
+  right: 20px;
+  top: 20px;
 }

@@ -1,0 +1,33 @@
+@import '../../styles/fade-animation.css';
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  animation: fade 0.5s ease-in;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.smallImagesWrapper {
+  position: absolute;
+}
+
+.smallImage {
+  cursor: pointer;
+  max-width: 100px;
+  margin: 5px;
+}
+
+.mainImage {
+  max-height: 300px;
+}
+
+.textSectionFirst {
+}
