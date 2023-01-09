@@ -2,35 +2,50 @@
     display: flex;
     flex-direction: column;
     width: calc((100% - 40px) / 3);
-    min-width: 250px;
+    /*min-width: 250px;*/
     /*height: 350px;*/
     /*background: red;*/
     padding: 10px;
     transition: .3s;
     border: 1px solid #EEE;
     gap: 7px;
-    cursor: pointer;
+    /*cursor: pointer;*/
+}
+.textWrapper {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 5px;
 }
 
-.item:hover .image {
-    transform: scale(1.05);
+.imageField {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    /*max-width: 240px;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .image {
-    display: flex;
     width: 100%;
-    padding-bottom: 70%;
-    /*background: green;*/
-    /*background-size: cover;*/
+    /*position: absolute;*/
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    transition: .4s;
+    transition: 1.5s;
+    padding-bottom: 70%;
 }
 
 
+.imageField:hover .image {
+    transform: scale(1.4);
+}
 
-.item:hover{
+.item:hover {
     box-shadow: 0 10px 25px -3px rgb(0 0 0 / 20%);
 }
 
@@ -42,6 +57,12 @@
 .title {
     display: flex;
     flex-grow: 1;
+    margin-bottom: 10px;
+}
+
+.infoField {
+    display: flex;
+    flex-direction: column;
 }
 
 .cash {
@@ -60,8 +81,9 @@
 }
 
 .rating {
-    margin-top: 10px;
+    /*margin-top: 10px;*/
     color: #9b9b08;
+    /*color: #fef93d;*/
 }
 
 .price {
@@ -74,14 +96,35 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
 }
+
+.setCount {
+    justify-content: center;
+}
+
+.setCount span:not(.stock) {
+    font-size: 30px;
+}
+
+.countInput {
+    width: 50px;
+    text-align: center;
+    margin: 0 10px;
+    font-size: 18px;
+    outline: none;
+    font-weight: bold;
+}
+
 .infoI,
 .cart {
     display: flex;
     align-items: center;
     transition: .2s;
+    cursor: pointer;
+
 }
-.infoI span,
+.info span,
 .cart span{
     transition: .2s;
 }
@@ -92,4 +135,85 @@
 
 .infoI:hover span{
     color: dodgerblue;
+}
+
+.dis {
+    pointer-events: none;
+    color: dodgerblue;
+    cursor: initial;
+}
+
+.z {
+    pointer-events: none;
+}
+
+.dis span {
+    color: dodgerblue;
+    cursor: initial;
+}
+
+.stock {
+    font-size: 18px;
+    /*font-weight: bold;*/
+    margin-right: auto;
+}
+
+.basket {
+    /*background: red;*/
+    width: 100%;
+    flex-direction: row;
+    /*height: 200px;*/
+    align-items: center;
+    gap: 15px;
+}
+
+.description {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.basket .imageField {
+    width: 60%;
+}
+
+
+.basket .infoField {
+    gap: 3px;
+    width: 75%;
+}
+
+.basket .info {
+    gap: 5px;
+}
+
+.basket .info .stock {
+    margin-right: 0;
+    margin-left: auto;
+}
+.basket .info .buttonsField{
+    /*display: flex;*/
+    justify-content: flex-end;
+    margin-top: 5px;
+}
+
+.basket .infoField .setCount {
+    width: 100%;
+    flex-direction: column;
+    margin-top: 0;
+}
+
+.buttonsField {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.basket .infoField .cash {
+    flex-direction: column;
+    gap: 3px;
+    align-items: flex-end;
 }

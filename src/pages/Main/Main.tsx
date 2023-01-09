@@ -5,69 +5,58 @@ import {observer} from "mobx-react-lite";
 import Category from "../Category/Category";
 import {Context} from "../../index";
 import {IProduct} from "../../interfaces/IProduct";
-import {SearchBar} from "../../components/SearchBar/SearchBar";
-import { Route } from "react-router-dom"
-import Item from "../../components/Item/Item";
 
 const Main = () => {
-  const {store} = useContext(Context)
+    const {store} = useContext(Context)
 
-  const [items, setItems] = useState(store.currentData)
-  const [brandsFilter, setBrandsFilter]: [brandsFilter: Array<string>, setBrandsFilter: Function] = useState([])
+    const [items, setItems] = useState(store.currentData)
+    const [brandsFilter, setBrandsFilter]: [brandsFilter: Array<string>, setBrandsFilter: Function] = useState([])
 
-  useEffect(() => {
-    setItems(store.currentData)
-    setBrandsFilter([])
-  }, [store.currentData])
+    useEffect(() => {
+        setItems(store.currentData)
+        setBrandsFilter([])
+    }, [store.currentData])
 
-  useEffect(() => {
-    if (!store.allData.length) {
-      store.setStore()
-        .then(d => {
-          setItems(store.currentData)
-        })
+    useEffect(() => {
+        if (!store.allData.length) {
+            store.setStore()
+                .then(d => {
+                    setItems(store.currentData)
+                })
+        }
+    }, [])
+
+    const itemsFilter = (arg: string) => {
+        if (brandsFilter.includes(arg)) {
+            setBrandsFilter(brandsFilter.filter((it: string) => it !== arg))
+        } else {
+            setBrandsFilter((brandsFilter: Array<string>) => [...brandsFilter, arg])
+        }
     }
-  }, [])
 
-  const itemsFilter = (arg: string) => {
-    if (brandsFilter.includes(arg)) {
-      setBrandsFilter(brandsFilter.filter((it: string) => it !== arg))
-    } else {
-      setBrandsFilter((brandsFilter: Array<string>) => [...brandsFilter, arg])
-    }
-  }
+    useEffect(() => {
+        if (brandsFilter.length) {
+            setItems(store.currentData.filter((it: IProduct) => brandsFilter.includes(it.brand.toLowerCase())))
+        } else {
+            setItems(store.currentData)
+        }
+    }, [brandsFilter])
 
-  useEffect(() => {
-    if (brandsFilter.length) {
-      setItems(store.currentData.filter((it: IProduct) => brandsFilter.includes(it.brand.toLowerCase())))
-    } else {
-      setItems(store.currentData)
-    }
-  }, [brandsFilter])
 
-  return (
-    <div className={q.mainPage}>
-      <div className={q.asideField}>
-        <Aside itemsFilter={itemsFilter} onPriceFilterInputChange={(min, max) => {
-          const newItems = store.currentData.filter(it => it.price >= min && it.price <= max)
-          setItems(newItems)
-        }} onStockFilterChange={(min, max) => {
-          const newItems = store.currentData.filter(it => it.stock >= min && it.stock <= max)
-          console.log(`min: ${min}`, `max: ${max}`)
-          setItems(newItems)
-        }}/>
-      </div>
-      <div className={q.mainField}>
-        <SearchBar onInput={(value) => {
-          setItems(store.currentData.filter(it => 
-            it.title.toLowerCase().includes(value.toLowerCase()) ||
-            it.brand.toLowerCase().includes(value.toLowerCase())
-          ))
-        }}/>
-        <Category items={items}/>
-      </div>
-    </div>
-  );
+    // const availability = () => {
+    //
+    // }
+
+    return (
+        <div className={q.mainPage}>
+            <div className={q.asideField}>
+                <Aside itemsFilter={itemsFilter}/>
+            </div>
+            <div className={q.mainField}>
+                <Category items={items}/>
+            </div>
+        </div>
+    );
 };
 
 export default observer(Main);

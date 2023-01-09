@@ -10,7 +10,7 @@ const Category = ({items} : {items: Array<IProduct>}) => {
         <div className={q.category}>
             {items.length
                 ? items.map((it: IProduct) =>
-                    <Item key={it.id} {...it}/>
+                    <Item key={it.id} {...it} showControls={false}/>
                 )
                 : <span className={q.empty}>Loading ...</span>}
         </div>
