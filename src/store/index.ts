@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 import { IProduct, IProductB } from '../interfaces/IProduct'
 import { all_data, ls_basket, old_promo } from '../constants'
-import { IPromocode } from '../promoCodes'
+import { IPromocode } from '../interfaces/IPromocode'
 
 export default class Store {
   private readonly address: string = 'https://dummyjson.com/products?limit=100'
@@ -15,6 +15,7 @@ export default class Store {
   sA: boolean = true
 
   constructor(codes: IPromocode[]) {
+    this.promoCodes = codes
     makeAutoObservable(this)
   }
 

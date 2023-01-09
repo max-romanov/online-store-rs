@@ -1,10 +1,10 @@
 @import '../../styles/fade-animation.css';
 
 .mainPage {
-  animation: fade 0.5s ease-in;
   margin-top: 81px;
   display: flex;
   width: 100%;
+  animation: fade 0.5s ease-in;
 }
 
 .asideField {
