@@ -146,11 +146,15 @@ const Basket = () => {
             setPopupIsOpen(false)
           }}
           closeComponent={
-            <button
+            <span
+              style={{ background: 'transparent', marginLeft: 'auto' }}
               onClick={() => {
                 setPopupIsOpen(false)
               }}
-            ></button>
+              className='material-symbols-outlined close-popup'
+            >
+              close
+            </span>
           }
         ></BasketPopup>
       )}

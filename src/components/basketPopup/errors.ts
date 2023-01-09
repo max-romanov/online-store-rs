@@ -2,55 +2,55 @@ import {makeAutoObservable} from "mobx";
 
 
 export class Errors {
-  
-  nameError: boolean;
-  phoneNumberError: boolean;
-  addressError: boolean;
 
-  cardNumberError: boolean;
-  validThruError: boolean;
-  codeError: boolean;
+  name: boolean;
+  phoneNumber: boolean;
+  address: boolean;
+
+  cardNumber: boolean;
+  validThru: boolean;
+  cvv: boolean;
 
   constructor(private initial: boolean) {
-    this.cardNumberError = initial;
-    this.codeError = initial;
-    this.validThruError = initial;
-    this.nameError = initial;
-    this.phoneNumberError = initial;
-    this.addressError = initial;
+    this.cardNumber = initial;
+    this.cvv = initial;
+    this.validThru = initial;
+    this.name = initial;
+    this.phoneNumber = initial;
+    this.address = initial;
     makeAutoObservable(this)
   }
 
   setCodeError(value: boolean) {
-    this.codeError = value;
+    this.cvv = value;
   }
 
   setCardNumberError(value: boolean) {
-    this.cardNumberError = value;
+    this.cardNumber = value;
   }
 
   setValidThruError(value: boolean) {
-    this.validThruError = value;
+    this.validThru = value;
   }
 
   setNameError(value: boolean) {
-    this.nameError = value;
+    this.name = value;
   }
 
   setAddressError(value: boolean) {
-    this.addressError = value;
+    this.address = value;
   }
 
   setPhoneNumberError(value: boolean) {
-    this.phoneNumberError = value;
-  } 
+    this.phoneNumber = value;
+  }
 
   setDefaults() {
-    this.phoneNumberError = this.initial;
-    this.validThruError = this.initial;
-    this.addressError = this.initial;
-    this.nameError = this.initial;
-    this.addressError = this.initial;
-    this.codeError = this.initial;
+    this.phoneNumber = this.initial;
+    this.validThru = this.initial;
+    this.address = this.initial;
+    this.name = this.initial;
+    this.address = this.initial;
+    this.cvv = this.initial;
   }
-} 
+}
