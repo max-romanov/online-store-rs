@@ -6,11 +6,8 @@ import { Route, Routes, useSearchParams } from 'react-router-dom'
 import Error from './pages/Error/Error'
 import Basket from './pages/Basket/Basket'
 import Item from './pages/Item/Item'
-import { Context } from './index'
 
 const App = () => {
-  const { store } = useContext(Context)
-
   return (
     <Layout>
       <main>

@@ -21,3 +21,17 @@
   width: 80%;
   border-left: 1px solid #ddd;
 }
+
+.searchBarWrapper {
+  position: fixed;
+  left: 50%;
+  top: 2.5%;
+  transform: translateX(-50%);
+  z-index: 501;
+}
+
+.searchBarWrapper input {
+  font-size: 22px;
+  text-align: center;
+  padding: 5px 40px;
+}

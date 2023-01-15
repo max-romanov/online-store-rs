@@ -1,4 +1,3 @@
-
 @keyframes fade {
   from {
     opacity: 0;
@@ -81,7 +80,7 @@
   color: #555;
 }
 
-.discountPrice:not(:nth-child(2)) {
+.discountPrice:nth-child(1) {
   font-size: 24px;
   color: #111;
 }
@@ -133,9 +132,12 @@
 
 .prommo {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   justify-content: center;
+  text-align: center;
   gap: 10px;
+  font-size: 14px;
 }
 
 .old {
@@ -144,6 +146,7 @@
 
 .basketPopup {
   position: fixed;
+  z-index: 10302403040204023;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -156,9 +159,8 @@
   flex-direction: column;
   min-width: 400px;
   box-shadow: 0 10px 25px -3px rgb(0 0 0 / 20%);
-  animation: fade .5s ease-in;
+  animation: fade 0.5s ease-in;
 }
-
 
 .basketPopup div {
   display: flex;
@@ -192,3 +194,45 @@ button {
   margin-right: auto;
   margin-bottom: 20px;
 }
+
+.succesPopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+  border: 2px solid green;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  color: green;
+  font-size: 25px;
+  text-align: center;
+  z-index: 500;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

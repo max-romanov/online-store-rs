@@ -12,6 +12,7 @@ const Basket = () => {
   const { errors } = useContext(ErrorsContext)
   const navigate = useNavigate()
   const [popupIsOpen, setPopupIsOpen] = useState(false)
+  const [succes, setSucces] = useState(false)
 
   useEffect(() => {
     if (!store.basket.length) {
@@ -51,11 +52,12 @@ const Basket = () => {
       )
       store.buy(temp ? discountPromoCode : '')
     }
-    navigate('/')
+    setSucces(true)
   }
 
   return (
     <div className={q.basket}>
+      {succes && <div className={q.succesPopup}>Order is processed</div>}
       <span className={q.basketTitle}>Basket</span>
       <div className={q.basketItemsField}>
         <div className={q.basketItems}>
@@ -81,6 +83,17 @@ const Basket = () => {
                 ) * (1 - discount || 0)
               ).toFixed(2)}{' '}
               $ - to pay
+            </span>
+            {discount ? (
+              <span
+                className={q.discountPrice}
+                style={{ textDecoration: 'line-through' }}
+              >
+                {store.basket.reduce((acc, curr) => acc + curr.price, 0)} $
+              </span>
+            ) : null}
+            <span className={q.discountPrice}>
+              {store.basket.reduce((acc, curr) => curr.count + acc, 0)} - items
             </span>
             <span className={q.discountPrice}>
               your discount -{' '}
@@ -109,13 +122,14 @@ const Basket = () => {
               {store.promoCodes.map((it) => (
                 <span
                   key={it.name}
+                  title={it.discount * 100 + '%'}
                   className={
                     store.oldPromoCodes.includes(it.name.toLowerCase())
                       ? q.old
                       : ''
                   }
                 >
-                  {it.name}
+                  {it.name} - {it.discount * 100}%
                 </span>
               ))}
             </span>
@@ -135,12 +149,14 @@ const Basket = () => {
           onSubmit={() => {
             const num = Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000
 
-            console.log(num)
-            console.log('order succes')
+            // console.log(num)
+            // console.log('order succes')
+
+            buy()
 
             setTimeout(() => {
-              store.clearBasket()
               errors.setDefaults()
+              setSucces(false)
               navigate('/')
             }, num)
             setPopupIsOpen(false)

@@ -15,8 +15,9 @@
   flex-direction: column;
 }
 
-.smallImagesWrapper {
-  position: absolute;
+.description {
+  font-size: 20px;
+  margin: 5px 0;
 }
 
 .smallImage {
@@ -26,8 +27,79 @@
 }
 
 .mainImage {
-  max-height: 300px;
+  display: flex;
+  width: 30%;
+  margin: 0 auto;
 }
 
-.textSectionFirst {
+.smallImagesWrapper {
+  display: flex;
+  gap: 20px;
+  margin: 20px auto;
+}
+
+.addToCartBtn {
+  background: green;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.infoI,
+.cart {
+  display: flex;
+  align-items: center;
+  transition: 0.2s;
+  gap: 3px;
+  cursor: pointer;
+}
+
+.info {
+  display: flex;
+  width: 50%;
+  margin: 10px auto 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dis {
+  pointer-events: none;
+  color: dodgerblue;
+  cursor: initial;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.info span,
+.cart span {
+  transition: 0.2s;
+}
+
+.cart:hover span {
+  color: green;
+}
+
+.infoI:hover span {
+  color: dodgerblue;
+}
+
+.dis {
+  pointer-events: none;
+  color: dodgerblue;
+  cursor: initial;
+}
+
+.z {
+  pointer-events: none;
+}
+
+.dis span {
+  color: dodgerblue;
+  cursor: initial;
 }

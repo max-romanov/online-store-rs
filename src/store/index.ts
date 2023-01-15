@@ -2,6 +2,7 @@ import { makeAutoObservable } from 'mobx'
 import { IProduct, IProductB } from '../interfaces/IProduct'
 import { all_data, ls_basket, old_promo } from '../constants'
 import { IPromocode } from '../interfaces/IPromocode'
+import { argv0 } from 'process'
 
 export default class Store {
   private readonly address: string = 'https://dummyjson.com/products?limit=100'
@@ -47,7 +48,11 @@ export default class Store {
     this.allData.push(...arr)
     this.currentData.push(...this.allData)
     const bskt = localStorage.getItem(ls_basket)
-    if (bskt) this.basket.push(...JSON.parse(bskt))
+    // if (bskt) this.basket.push(...JSON.parse(bskt))
+    if (bskt) {
+      this.basket.length = 0
+      this.basket.push(...JSON.parse(bskt))
+    }
     const oldP = localStorage.getItem(old_promo)
     if (oldP) this.oldPromoCodes.push(...JSON.parse(oldP))
   }
@@ -84,6 +89,23 @@ export default class Store {
 
   showAll() {
     this.sA = !this.sA
+  }
+
+  resetData() {
+    this.currentData.length = 0
+    this.currentData.push(...this.allData)
+    this.setCurrentCategory('')
+    this.categories.length = 0
+    const categories = Array.from(new Set(this.allData.map((i) => i.category)))
+    this.categories.push(...categories)
+  }
+
+  checkAviability(arg: boolean) {
+    if (arg) {
+      this.currentData.filter((item) => item.stock > 0)
+      return
+    }
+    this.currentData = this.allData
   }
 
   clearBasket() {
