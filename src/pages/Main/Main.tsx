@@ -11,10 +11,7 @@ const Main = () => {
   const { store } = useContext(Context)
 
   const [items, setItems] = useState(store.currentData)
-  const [brandsFilter, setBrandsFilter]: [
-    brandsFilter: Array<string>,
-    setBrandsFilter: Function
-  ] = useState([])
+  const [brandsFilter, setBrandsFilter] = useState<string[]>([])
 
   useEffect(() => {
     setItems(store.currentData)

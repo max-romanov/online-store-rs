@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite'
 import q from './Aside.module.css'
 import { IProduct } from '../../interfaces/IProduct'
 
-const Aside = ({ itemsFilter }: { itemsFilter: Function }) => {
+const Aside = ({ itemsFilter }: { itemsFilter: React.Dispatch<IProduct[]> }) => {
   const { store } = useContext(Context)
 
   const [current, setCurrent] = useState('')
